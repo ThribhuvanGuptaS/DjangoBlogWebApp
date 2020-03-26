@@ -7,6 +7,8 @@ A blogging web app developed entirely using Django
 ##### Crispy Forms
 ##### Pillow
 
+# Screenshots
+
 ### Home Page
 ![homePage](https://user-images.githubusercontent.com/56474545/77692641-05880300-6fcd-11ea-8820-8d425ab6334f.JPG)
 
