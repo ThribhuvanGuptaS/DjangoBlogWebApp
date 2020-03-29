@@ -135,8 +135,8 @@ LOGIN_URL = 'login'
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'thribhuvangupta@gmail.com'
-# EMAIL_HOST_PASSWORD = 'smnsrnezfhrdarju'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
 
 AWS_ACCESS_KEY_ID = os.environ.get("S3_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("S3_SECRET_KEY")
