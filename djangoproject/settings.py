@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5!fpr4_310s=7__hy(6^z4y7xorm4-dh)eey58-hgm*nexe!6+'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get("DEBUG_VALUE")=="True")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['erkaritsfirstdjangoapp.herokuapp.com']
 
 
 # Application definition
@@ -121,6 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # for heroku to identify static folder
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -140,7 +142,7 @@ LOGIN_URL = 'login'
 
 AWS_ACCESS_KEY_ID = os.environ.get("S3_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("S3_SECRET_KEY")
-AWS_STORAGE_BUCKET_NAME = 'django-blog-app-bucket-initial'
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
@@ -152,3 +154,5 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # MEDIAFILES_LOCATION = 'media'
 # DEFAULT_FILE_STORAGE = 'djangoproject.custom_storages.MediaStorage'
+
+django_heroku.settings(locals())
